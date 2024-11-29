@@ -1,0 +1,13 @@
+
+services:
+  api:
+    image: node:20.17.0
+    working_dir: /app
+    volumes: 
+      - .:/app
+    command: sh -c "npm install & npm run dev"
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000

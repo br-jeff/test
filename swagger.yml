@@ -1,0 +1,111 @@
+components:
+  schemas: {}
+  securitySchemes:
+    bearerAuth:
+      scheme: bearer
+      type: http
+info:
+  title: Documentation
+  version: 1.0.0
+  description: ""
+openapi: 3.0.0
+paths:
+  /:
+    get:
+      operationId: HealthController.getHealth
+      responses:
+        "200":
+          content:
+            application/json: {}
+          description: Successful response
+      summary: Get health
+      tags:
+        - Health
+  /users:
+    get:
+      operationId: UserController.getAll
+      responses:
+        "200":
+          content:
+            text/html; charset=utf-8: {}
+          description: Successful response
+      summary: Get all
+      tags:
+        - User
+    post:
+      operationId: UserController.post
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+        description: ""
+        required: false
+      responses:
+        "200":
+          content:
+            text/html; charset=utf-8: {}
+          description: Successful response
+      summary: Post
+      tags:
+        - User
+  /users/{id}:
+    get:
+      operationId: UserController.getOne
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            pattern: "[^\\/#\\?]+?"
+            type: number
+      responses:
+        "200":
+          content:
+            text/html; charset=utf-8: {}
+          description: Successful response
+      summary: Get one
+      tags:
+        - User
+    put:
+      operationId: UserController.put
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            pattern: "[^\\/#\\?]+?"
+            type: number
+      requestBody:
+        content:
+          application/json:
+            schema: {}
+        description: ""
+        required: false
+      responses:
+        "200":
+          content:
+            text/html; charset=utf-8: {}
+          description: Successful response
+      summary: Put
+      tags:
+        - User
+    delete:
+      operationId: UserController.remove
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            pattern: "[^\\/#\\?]+?"
+            type: number
+      responses:
+        "200":
+          content:
+            text/html; charset=utf-8: {}
+          description: Successful response
+      summary: Remove
+      tags:
+        - User
+servers:
+  - url: http://localhost:3000
+    description: Development
